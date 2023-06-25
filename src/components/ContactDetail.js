@@ -6,10 +6,19 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import '../styles/contactlist.scss';
 import { Avatar } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { openEditForm } from '../action/contactAction';
+import EditContactForm from './EditContactForm';
 
 // This Component is for particular contact data show on right side card
 export default function ContactDetails() {
+  const dispatch = useDispatch();
+  // Checking for edit form  popup state
+  const isOpenEditForm  = useSelector(state => state?.FetchContactDetail?.isOpenEditForm);
+  const handleEditBtnClick = () => {
+    dispatch(openEditForm(true));
+  }
+
   // Searched filter data
   let selectedContactData = useSelector(state => state?.FetchContactDetail?.selectedData)[0]
   let fullName = selectedContactData.name;
@@ -66,8 +75,9 @@ export default function ContactDetails() {
 
       </CardContent>
       <CardActions>
-        <Button className='contact-edit-btn'>Edit Details</Button>
+        <Button className='contact-edit-btn' onClick={handleEditBtnClick}>Edit Details</Button>
       </CardActions>
+      {isOpenEditForm === true && <EditContactForm/> }
     </Card>
   );
 }

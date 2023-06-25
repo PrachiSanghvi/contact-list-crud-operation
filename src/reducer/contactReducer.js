@@ -1,4 +1,4 @@
-import { ADD_CONTACT_DATA, EDIT_CONTACT_DATA, SEARCHED_DATA, SEARCHED_VALUE, SELECTED_DATA } from "../action/contactAction";
+import { ADD_CONTACT_DATA, EDIT_CONTACT_DATA, OPEN_EDIT_FORM, SEARCHED_DATA, SEARCHED_VALUE, SELECTED_DATA } from "../action/contactAction";
 import contactList from "../db";
 const initialContactState = {
   list: contactList?.contacts,
@@ -6,7 +6,8 @@ const initialContactState = {
     0: contactList?.contacts[0]
   },
   searchedData: [],
-  searchedValue: ''
+  searchedValue: '',
+  isOpenEditForm: false
 }
 
 export const FetchContactDetail = (state = initialContactState, action) => {
@@ -28,7 +29,7 @@ export const FetchContactDetail = (state = initialContactState, action) => {
         ...state,
         list: state.list.map((contact) => {
           if (+contact.id === +action.payload.id) {
-            return { ...action.payload }
+            return {...action.payload}
           } else {
             return contact;
           }
@@ -53,6 +54,12 @@ export const FetchContactDetail = (state = initialContactState, action) => {
       return {
         ...state,
         searchedValue: action.payload
+      }
+
+    case OPEN_EDIT_FORM:
+      return {
+        ...state,
+        isOpenEditForm:action.payload
       }
     default:
       return state;
