@@ -6,7 +6,7 @@ const contactList = {
       "role": "Frontend developer",
       "email": "elmaherring@unq.com",
       "phone": "8967564567",
-      "company": "TCS",
+      "company": "ZURU Tech India",
       "address": "Memnagar,Ahmedabad",
       "bg": "blue"
     },
