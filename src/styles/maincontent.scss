@@ -1,0 +1,68 @@
+// Contact header styling
+.contact-list-header {
+  display: flex;
+  padding: 45px 0 0 45px;
+  .contact-icon {
+    margin: auto 15px auto 0;
+  }
+  .contact-title-wrapper {
+    .contact-title {
+      display: block;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .contact-subtitle {
+      font-size: 12px;
+    }
+  }
+}
+
+
+
+
+
+.search-and-add-contact {
+  display: flex;
+  // Searchbar styling
+  .contact-search {
+    padding: 45px 0 0 80px;
+    .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+      border: none !important;
+    }
+  }
+  // Add contact btn style
+  .add-contact-btn-wrapper {
+    padding: 45px 0 0 20px;
+    button{
+      background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+      color: #fff;
+      width: 150px;
+    }
+  }
+} 
+
+
+
+// Add contact form style
+
+.add-contact-form-wrapper {
+  text-align: center;
+  border-radius: 50px;
+  .MuiTextField-root {
+    display: block;
+    margin-bottom: 20px;
+    input {
+      width: 300px;
+    }
+  }
+  .add-contact-form {
+    margin: auto;
+  }
+  .add-contact-submit {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 50px;
+    background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+    color: #ffffff;
+  }
+}

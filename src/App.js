@@ -1,19 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-
+import './styles/app.scss'
+import MainContent from './components/MainContent';
+import Sidebar from './components/Sidebar'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="contact-list-app">
+      <Sidebar />
+      <MainContent />
     </div>
   );
 }
