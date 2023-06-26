@@ -4,23 +4,22 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import '../styles/contactlist.scss';
 import { Avatar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { openEditForm } from '../action/contactAction';
 import EditContactForm from './EditContactForm';
+import '../styles/contactlist.scss';
 
 // This Component is for particular contact data show on right side card
 export default function ContactDetails() {
   const dispatch = useDispatch();
   // Checking for edit form  popup state
   const isOpenEditForm  = useSelector(state => state?.FetchContactDetail?.isOpenEditForm);
-  const handleEditBtnClick = () => {
-    dispatch(openEditForm(true));
-  }
-
+  let contactData = useSelector(state => state?.FetchContactDetail?.list);
   // Searched filter data
-  let selectedContactData = useSelector(state => state?.FetchContactDetail?.selectedData)[0]
+  let selectedContact = useSelector(state => state?.FetchContactDetail?.selectedData)[0];
+  // Updated selected data getting from global store based on selected id
+  let selectedContactData = contactData.filter(data => data.id === selectedContact.id)[0];
   let fullName = selectedContactData.name;
   // Getting inital name
   let arrName = fullName?.split(" ");
@@ -29,6 +28,10 @@ export default function ContactDetails() {
   // Select the first letter of the lastname
   let lname = arrName[arrName?.length - 1].charAt(0).toUpperCase();
   let initialName = fname + lname;
+
+  const handleEditBtnClick = () => {
+    dispatch(openEditForm(true));
+  }
   return (
     <Card sx={{ minWidth: 400 }} className='contact-detail-wrapper'>
       <CardContent className='contact-details'>

@@ -82,6 +82,7 @@ const EditContactForm = () => {
   } = useFormik({
     initialValues: initialValues,
     validationSchema: contactFormSchema,
+    enableReinitialize: true,
     // Submit event
     onSubmit: (values) => {
       dispatch(editContactData(values))
@@ -94,7 +95,6 @@ const EditContactForm = () => {
 
   // Model open state handling  
   const handleClose = () => {
-    debugger
     dispatch(openEditForm(false));
   };
 
