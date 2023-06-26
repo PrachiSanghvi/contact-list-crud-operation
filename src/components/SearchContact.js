@@ -20,7 +20,10 @@ const SearchContact = () => {
     // Using Debouncing effect for search data after 1 second delay for minimize unwanted api call
     clearTimeout(timeRef.current);
     timeRef.current = setTimeout(() => {
-      let resultData = contactData.filter(data => data.name.toLowerCase().includes(search.toLowerCase()))
+      let resultData = [];
+      if(search !== '') {
+        resultData = contactData.filter(data => data.name.toLowerCase().includes(search.toLowerCase()))
+      }
       dispatch(getSearchedData(resultData))
       dispatch(getSearchedValue(search))
     }, 1000);

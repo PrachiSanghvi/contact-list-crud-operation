@@ -75,6 +75,7 @@ const EditContactForm = () => {
   const {
     values, 
     errors,
+    touched,
     handleChange,
     handleBlur,
     handleSubmit,
@@ -82,7 +83,6 @@ const EditContactForm = () => {
   } = useFormik({
     initialValues: initialValues,
     validationSchema: contactFormSchema,
-    enableReinitialize: true,
     // Submit event
     onSubmit: (values) => {
       dispatch(editContactData(values))
@@ -108,7 +108,7 @@ const EditContactForm = () => {
         className='edit-contact-form-wrapper'
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Add Contact form
+          Edit Contact form
         </BootstrapDialogTitle>
         <form onSubmit={handleSubmit} className='edit-contact-form'>
           <TextField
@@ -121,7 +121,9 @@ const EditContactForm = () => {
             onBlur={handleBlur}
             error={errors.name}
           />
-
+         {errors?.name && touched?.name && (
+            <p style={{ color: "red" }}> {errors?.name}</p>
+          )}
           <TextField
             placeholder="Role"
             label="Role"
@@ -133,7 +135,9 @@ const EditContactForm = () => {
             onBlur={handleBlur}
             error={errors.role}
           />
-
+          {errors?.role && touched?.role && (
+            <p style={{ color: "red" }}> {errors?.role}</p>
+          )}
           <TextField
             placeholder="Email"
             label="Email"
@@ -144,7 +148,9 @@ const EditContactForm = () => {
             onBlur={handleBlur}
             error={errors.email}
           />
-
+          {errors?.email && touched?.email && (
+            <p style={{ color: "red" }}> {errors?.email}</p>
+          )}
           <TextField
             placeholder="Phone"
             label="Phone"
@@ -154,7 +160,9 @@ const EditContactForm = () => {
             onChange={handleChange}
             error={errors.phone}
           />
-
+          {errors?.phone && touched?.phone && (
+            <p style={{ color: "red" }}> {errors?.phone}</p>
+          )}
           <TextField
             placeholder="Company"
             label="Company"
@@ -164,7 +172,9 @@ const EditContactForm = () => {
             onChange={handleChange}
             error={errors.company}
           />
-
+           {errors?.company && touched?.company && (
+            <p style={{ color: "red" }}> {errors?.company}</p>
+          )}
           <TextField
             placeholder="Address"
             label="Address"
@@ -174,7 +184,9 @@ const EditContactForm = () => {
             onChange={handleChange}
             error={errors.address}
           />
-
+          {errors?.address && touched?.address && (
+            <p style={{ color: "red" }}> {errors?.address}</p>
+          )}
           <Button
             type="submit"
             className='edit-contact-submit'>Submit

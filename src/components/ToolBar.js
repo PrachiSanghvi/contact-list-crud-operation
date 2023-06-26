@@ -3,7 +3,7 @@ import { AppBar, Box, CssBaseline, Toolbar } from '@mui/material'
 
 // Top toobar for any update and header
 const ToolBar = () => {
-  const drawerWidth = 75;
+  const drawerWidth = 60;
   return (
     <div>
       <Box

@@ -1,20 +1,64 @@
+@import "./mixin";
+
 .contact-table-wrapper {
   display: flex;
+  @include mq('phone') {
+    display: block;
+    max-width: 315px;
+  }
   .contact-list-table-wrapper {
     padding: 45px 0 0 80px;
+    @include mq('phone') {
+      padding: 10px 0 0 15px;
+      margin-top: 20px;
+    }
     .contact-list-table {
-      .contact-list-header {
-        background-color: #cfd3d538;
+      .header-column-2 {
+        @include mq('phone') {
+          display: none;
+        }
+      }
+      .header-column-3 {
+        @include mq('phone') {
+          display: none;
+        }
       }
       .contact-list-body {
+        tr {
+          td {
+            @include mq('phone') {
+              width: -1px !important;
+              span {
+                padding: 0;
+                svg {
+                  width: 0.7em;
+                  height: 0.7em;
+                }
+              }
+            }
+          }
+        }
         .avatar-icon-wrapper {
           width: 40px;
           padding-right: 0;
+          @include mq('phone') {
+           display: none;
+            .MuiAvatar-root {
+              width: 20px;
+              height: 20px;
+              font-size: 8px;
+            }
+          }
           .avatar-icon {
           }
         }
         .contact-detail {
           padding-left: 0;
+        }
+        .contact-company {
+          @include mq('phone') {
+            display: none;
+          }
         }
       }
     }
@@ -24,6 +68,11 @@
   .contact-detail-wrapper {
     margin: 45px 0 0 45px;
     background-color: #cfd3d538;
+    @include mq('phone') {
+      margin: 10px 0 0 15px;
+      max-width: 300px;
+      min-width: 300px;
+    }
     .contact-details {
       .contact-main-detail {
         text-align: center;

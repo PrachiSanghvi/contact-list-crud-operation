@@ -30,9 +30,11 @@ export default function ContactList() {
 
   
   useEffect(() => {
-    let rowsOnMount = searchedData.length > 0 || searchedValue !== '' ? searchedData : contactData;
+    // Checking for searched data, if have any searched match found
+    //  then will show search data otherwise show contact Data
+    let rowsOnMount = searchedValue !== '' ? searchedData : contactData;
     setVisibleRows(rowsOnMount); 
-  }, [searchedData,contactData]);
+  }, [contactData,searchedData,visibleRows]);
 
   const handleClick = (event, name) => {
     // on select of particular contact list field store that in state for showing right side cart
@@ -68,6 +70,7 @@ export default function ContactList() {
   ];
 
   console.log("visibleRows",visibleRows);
+  console.log("contactData",contactData);
   return (
     <Box sx={{ width: '100%' }} className='contact-list-table-wrapper'>
       <Paper sx={{ width: '100%', mb: 2, boxShadow: 'none' }}>
@@ -78,10 +81,11 @@ export default function ContactList() {
           >
             <TableHead className='contact-list-header'>
               <TableRow>
-                {columns.map((column) => (
+                {columns.map((column,i) => (
                   <TableCell
                     key={column.id}
                     style={{ minWidth: column.minWidth }}
+                    className={`header-column-${i}`}
                   >
                     {column.label}
                   </TableCell>
@@ -119,7 +123,7 @@ export default function ContactList() {
                           <Avatar className='avatar-icon' sx={{ bgcolor: row.bg,fontSize: '15px' }} alt="Remy Sharp">{initialName}</Avatar>
                         </TableCell>
                         <TableCell className='contact-detail' id={labelId}> {row.name}<div className='contact-email'>{row.email}</div></TableCell>
-                        <TableCell>{row.company}</TableCell>
+                        <TableCell className='contact-company'>{row.company}</TableCell>
                       </TableRow>
                     );
                   })

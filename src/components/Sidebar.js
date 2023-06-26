@@ -11,7 +11,7 @@ import '../styles/sidebar.scss'
 
 // Static sidebar with radient ui
 export default function PermanentDrawerLeft() {
-  const drawerWidth = 75;
+  const drawerWidth = 60;
   return (
     <Box sx={{ display: 'flex' }}>
       <Drawer

@@ -1,7 +1,14 @@
+@import "./mixin";
 // Contact header styling
 .contact-list-header {
   display: flex;
   padding: 45px 0 0 45px;
+  background-color: #cfd3d538;
+  @include mq('phone') {
+    padding: 10px 0 0 10px;
+    margin: 10px 0 0 10px;
+    max-width: 300px;
+  }
   .contact-icon {
     margin: auto 15px auto 0;
   }
@@ -17,15 +24,18 @@
   }
 }
 
-
-
-
-
 .search-and-add-contact {
   display: flex;
+  @include mq('phone') {
+    display: block;
+    margin-top: 20px;
+  }
   // Searchbar styling
   .contact-search {
     padding: 45px 0 0 80px;
+    @include mq('phone') {
+      padding: 10px 0 0 25px;
+    }
     .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
       border: none !important;
     }
@@ -33,10 +43,16 @@
   // Add contact btn style
   .add-contact-btn-wrapper {
     padding: 45px 0 0 20px;
+    @include mq('phone') {
+      padding: 10px 0 0 25px;
+    }
     button{
       background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
       color: #fff;
       width: 150px;
+      @include mq('phone') {
+        width: 280px;
+      }
     }
   }
 } 
@@ -53,6 +69,9 @@
     margin-bottom: 20px;
     input {
       width: 300px;
+      @include mq('phone') {
+        width: 250px;
+      }
     }
   }
   .add-contact-form, .edit-contact-form {
